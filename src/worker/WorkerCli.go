@@ -24,7 +24,7 @@ func (t *WorkerCliOperation) Registry(address string){
 	var reply string
 	args := &common.Args{ address}
 	if err := t.client.Call("MasterOperation.Registry", args, &reply); err != nil{
-		log.Fatal("error:", err)
+		log.Fatalf("error:", err)
 	}
 }
 func (t *WorkerCliOperation) FileTakeLock(hash string){

@@ -27,7 +27,7 @@ func StartMasterCli() { // location : 9091,9092,9093
 func DoOperation(filePath []string,kind string ) ([]string, error){
 	value,ok := masterCliOperation.operationMap["kind"]
 	if !ok {
-		return nil,fmt.Errorf("op is not valid")
+		return nil,fmt.Errorf("Operation is not valid")
 	}
 	fmt.Println("kicking %s phase\n", value)
 	var mapOutput []string

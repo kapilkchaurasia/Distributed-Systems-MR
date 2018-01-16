@@ -12,14 +12,14 @@ type MasterOperation struct{
 
 var masterOperation = make(map[string]uint64,0)
 var WorkerSrvAddr = make([]string, 0)
+
 func StartMasterSrv(port int ) string{
 	op := new(MasterOperation)
 	common.StartRpcServer(op,port, "master-server")
 	return fmt.Sprintf(":%d",port)
 }
 func (m *MasterOperation) Registry(arg *common.Args, reply *string) error {
-	fmt.Printf("Registing worker server %s", arg.Address)
-	fmt.Println()
+	fmt.Printf("Registing worker server %s\n", arg.Address)
 	WorkerSrvAddr = append(WorkerSrvAddr, arg.Address)
 	return nil
 }
@@ -35,7 +35,7 @@ func (m *MasterOperation) FileTakeLock(hash *string, reply *string) error {
 			return nil
 		}
 	}
-	}
+}
 
 func (m *MasterOperation) FileReleaseLock(hash *string, reply *string) error {
 	fmt.Printf("looking for hash file for release %s\n", hash)

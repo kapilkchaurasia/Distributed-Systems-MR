@@ -14,8 +14,7 @@ type Args struct{
 
 
 func StartRpcServer(rcvr interface{}, port int, kind string){
-	fmt.Printf("starting %s on port %d", kind, port)
-	fmt.Println()
+	fmt.Printf("starting %s on port %d\n", kind, port)
 	server := rpc.NewServer()
 	server.Register(rcvr)
 	address := fmt.Sprintf(":%d", port)
@@ -29,13 +28,11 @@ func StartRpcServer(rcvr interface{}, port int, kind string){
 }
 
 func StartRpcCli(location string, kind string) net.Conn {
-	fmt.Printf("starting client %s for srv location %s" ,kind, location )
-	fmt.Println()
+	fmt.Printf("starting client %s for srv location %s\n" ,kind, location )
 	conn, err := net.Dial("tcp", location)
 	if err != nil {
 		log.Fatal("dialing:", err)
 	}
-	fmt.Print("client started listen'g")
-	fmt.Println()
+	fmt.Print("client started listen'g\n")
 	return conn
 }
